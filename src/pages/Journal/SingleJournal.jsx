@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getJournals, deleteJournal } from "../../services/JournalService.jsx"; // Assuming this function fetches the journal data by id
+import { getJournals, deleteJournal } from "../../services/JournalService.jsx";
 import './SingleJournal.css';
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";

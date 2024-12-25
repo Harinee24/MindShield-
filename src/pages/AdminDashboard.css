@@ -1,0 +1,148 @@
+
+.admin-dashboard {
+    /*border: 1px solid red;*/
+    padding: 2rem 2rem 3.5rem 2rem;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header > h1 {
+    color: var(--black2);
+    margin-bottom: 2rem;
+
+}
+
+.dashboard-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    gap: 3rem;
+}
+
+.summary-card {
+    background: var(--orange);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    transition: .6s;
+
+}
+.summary-card:hover {
+    background: var(--black2);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.summary-card > p{
+    margin-top: 10px ;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dashboard-lists {
+    margin-top: 5rem;
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1;
+    min-width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow:0 0 40px -10px rgba(0,0,0,.3),
+    0 0 25px -15px rgba(0,0,0,.2);
+    padding: 20px;
+    transition: .6s;
+}
+
+.list-container:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+
+}
+
+.list-container > h2 {
+    margin-bottom: 20px;
+    color: var(--black2);
+
+}
+
+.list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-container th,
+.list-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.list-container th {
+    background-color: #f2f2f2;
+    transition: .6s;
+}
+.list-container tbody > tr:hover{
+    cursor: pointer;
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+.list-container thead > tr > th{
+    background-color: var(--orange);
+}
+.list-container thead > tr:hover {
+    transform: none !important;
+}
+.list-container tbody > tr:hover > td:first-child {
+    text-align: center;
+}
+.list-container tr:hover > td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.list-container tr:hover > td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.admin-dashboard .delete-btn{
+    background-color: var(--light-red);
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 10px 14px;
+    transition: .6s;
+
+    color: white;
+}
+
+.admin-dashboard .delete-btn:hover {
+    color: black;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+
+.list-container table {
+    border-spacing: 0;
+    border-radius: 5px;
+}

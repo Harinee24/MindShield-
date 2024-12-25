@@ -9,13 +9,12 @@ const Journal = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     useEffect(() => {
-        // Fetch all journals when the component mounts
         const fetchJournals = async () => {
             const data = await getJournals();
             setJournals(data);
         };
         fetchJournals();
-    }, []);
+    }, [showPopup]);
 
     return (
         <>

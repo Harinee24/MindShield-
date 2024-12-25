@@ -4,16 +4,16 @@ export function TeamCard() {
     const teamMembers = [
         {
             quote:
-                "Accomplished the development of the Journal feature backend, ensuring seamless data management and retrieval. Implemented Forgot Password feature and contributed for Website frontend ",
+                "Developed the Journal backend, built the Forgot Password frontend, and made minor frontend updates.",
             name: "Harinee",
-            designation: "Software Developer",
+            designation: "Java Developer",
             src: "harinee_profile.jpg",
         },
         {
             quote:
                 "Successfully built and integrated the frontend and backend systems for Authentication, SOS Alerts, and Journal features, optimizing real-time user interactions and security protocols.",
             name: "Ajay Negi",
-            designation: "Software Engineer",
+            designation: "Java Developer",
             src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop",
         },
         {

@@ -4,6 +4,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import './index.css';
 import Slok from "./components/slok.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 // Lazy load the components
 const Layout = lazy(() => import('./Layout.jsx'));
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
             <Route path="/shlok/:shlokId" element={<Slok />} />
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/resetPassword/:token" element={<ResetPassword />} />
+            <Route path="/admindashboard" element={<AdminDashboard />} />
 
         </Route>
     )

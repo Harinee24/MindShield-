@@ -55,6 +55,9 @@
     align-items: center;
     gap: 0.5rem; 
 }
+.heading:hover {
+    text-decoration: none;
+}
 
 .heading img {
     width: 2rem; 
