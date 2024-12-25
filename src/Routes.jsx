@@ -2,11 +2,8 @@ import { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import './index.css';
-import Slok from "./components/slok.jsx";
-import EditProfile from "./pages/EditProfile.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
 
-// Lazy load the components
+
 const Layout = lazy(() => import('./Layout.jsx'));
 const RegisterForm = lazy(() => import("./components/Register.jsx"));
 const Contact = lazy(() => import("./pages/SOSAlerts/Contact/contact.jsx"));
@@ -20,6 +17,10 @@ const ErrorPage = lazy(() => import('./components/ErrorPage.jsx'));
 const Login = lazy(() => import("./components/Login.jsx"));
 const ForgotPassword = lazy(() => import("./components/forgotPassword.jsx"));
 const ResetPassword = lazy(() => import("./components/resetPassword.jsx"));
+const Slok = lazy(() => import("./components/slok.jsx"));
+const EditProfile = lazy(() => import("./pages/EditProfile.jsx"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard.jsx"));
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(

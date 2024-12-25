@@ -61,37 +61,7 @@ function App() {
                   <div></div>
               </div>
 
-              {/*/!* ---Service Container--- *!/*/}
-              {/*<div className={"home-service-container"}>*/}
-              {/*    <div className={"service-title-container"}>*/}
-              {/*        <h1>Our Service</h1>*/}
-              {/*    </div>*/}
-              {/*</div>*/}
-
           </section>
-
-
-          {/* ---Hero Section--- */}
-          {/*<section className={"mindshield-main"}>*/}
-          {/*        <div className="mindshield-content">*/}
-          {/*            <h1>Help when u need it, <br/>Hope when u want it</h1><br/>*/}
-          {/*            <p>*/}
-          {/*                A platform dedicated to your safety and mental well-being. Instantly notify loved ones in*/}
-          {/*                emergencies with our SOS feature, reflect through secure journaling, and stay motivated with*/}
-          {/*                uplifting affirmations.*/}
-          {/*            </p><br/>*/}
-
-          {/*            <Link to="/register">*/}
-          {/*                <button className="register-button">Register</button>*/}
-          {/*            </Link>*/}
-          {/*        </div>*/}
-
-          {/*    <div className="mindshield-image">*/}
-          {/*        /!*<img src="src/assets/img1.jpg" alt="Illustration" width="650" height="auto"/>*!/*/}
-          {/*        <img src="handshake.jpeg" alt="Illustration" width="650" height="330"/>*/}
-
-          {/*    </div>*/}
-          {/*</section>*/}
 
 
           {/* ---Service Section--- */}
@@ -125,21 +95,6 @@ function App() {
                   </div>
               </div>
           </section>
-
-          {/* ---Upcoming Chat Feature Section--- */}
-          {/*<section className="chat-feature-container" id="chat-feature">*/}
-          {/*    <div className="chat-feature-content">*/}
-          {/*        <h2>Upcoming Chat Feature</h2>*/}
-          {/*        <p>*/}
-          {/*            Share your thoughts and problems with others to feel lighter and more relaxed.*/}
-          {/*            Our upcoming chat feature is designed to help you connect, share, and support each other in times of need.*/}
-          {/*            Stay tuned for updates!*/}
-          {/*        </p>*/}
-          {/*        <div className="chat-feature-image">*/}
-          {/*            <img src="chat.svg" alt="Chat Feature" width="600" height="350" />*/}
-          {/*        </div>*/}
-          {/*    </div>*/}
-          {/*</section>*/}
 
           <div className={"line-div"}>
               <div></div>
