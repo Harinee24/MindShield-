@@ -46,7 +46,7 @@ function App() {
                   </div>
 
                   <div className={"right-home-hero-container"}>
-                      <img src={dashboard} alt={"Dashboard Page Image"}/>
+                      <img src={dashboard} alt={"UserDashboard Page Image"}/>
                       <img src={contactImage} alt={"Contact Page Image"}/>
                   </div>
               </div>

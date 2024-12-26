@@ -1,16 +1,17 @@
 .emergency-card {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 1rem;
-    border: 1px solid #c3c2c2;
+    border: 1px solid #EFEFEF;
     border-radius: 103.17px;
-    padding: 0.75rem 1.5rem;
-    transition: box-shadow 0.3s ease;
+    padding: 0.75rem 1.5em 0.75rem 0.75rem;
+    transition: width 0.6s ease-in-out;
+
+    width: 290px;
 }
 
 .emergency-card:hover {
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .emergency-card-image {
@@ -20,7 +21,6 @@
     border-radius: 50%;
     width: 3.5rem;
     height: 3.5rem;
-    background-color: #f9f9f9;
 }
 
 .emergency-card-image > img {
@@ -30,24 +30,28 @@
 
 .emergency-card-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #333;
+    align-items: center;
+    flex-direction: column;
+    white-space: nowrap;
 }
 
 .emergency-card-content p {
     margin: 0;
-}
-
-.emergency-card-content p:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.3rem;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
 .emergency-card-content p:last-child {
-    font-size: 1rem;
-    color: #555;
+    display: none;
+}
+
+.emergency-card:hover .emergency-card-content p:first-child {
+    display: none;
+}
+
+.emergency-card:hover .emergency-card-content p:last-child {
+    display: block;
 }

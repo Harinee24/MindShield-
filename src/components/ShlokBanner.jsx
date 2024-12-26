@@ -14,8 +14,6 @@ const ShlokBanner = () => {
             try {
                 const response = await axios.get(API_URL);
                 setShlok(response.data);
-
-                console.log("Shlok Data: ",response.data);
             } catch (error) {
                 console.error("Error fetching the shlok:", error);
             }
@@ -23,7 +21,6 @@ const ShlokBanner = () => {
         fetchShlok();
     }, []);
 
-    console.log(shlok);
 
     // Conditionally render content only when `shlok` is not null
     if (!shlok) {

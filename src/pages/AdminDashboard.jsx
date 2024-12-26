@@ -8,20 +8,23 @@ const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [journals, setJournals] = useState([]);
     const [emergencyContact, setEmergencyContact] = useState([]);
+    const [alertLogs, setAlertlogs] = useState([]);
     let contactCounts = 0;
 
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const [usersRes, journalsRes, emergencyContactsRes] = await Promise.all([
+                const [usersRes, journalsRes, emergencyContactsRes, alertLogsRes] = await Promise.all([
                     axios.get("http://localhost:8080/api/get/all/users"),
                     axios.get("http://localhost:8082/api/journals/all"),
                     axios.get("http://localhost:8081/api/admin/allcontact"),
+                    axios.get("http://localhost:8081/api/admin/alertlogs")
                 ]);
 
                 setUsers(usersRes.data);
                 setJournals(journalsRes.data);
                 setEmergencyContact(emergencyContactsRes.data);
+                setAlertlogs(alertLogsRes.data);
 
             } catch (error) {
                 console.error("Error fetching details", error);
@@ -42,6 +45,13 @@ const AdminDashboard = () => {
         return user ? user.name : 'Unknown User';
     };
 
+    const formatTimestamp = (timestamp) => {
+        const dateObj = new Date(timestamp);
+        const date = dateObj.toLocaleDateString(); // e.g., "12/26/2024"
+        const time = dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); // e.g., "14:30"
+        return { date, time };
+    };
+
     const deleteThisJournal = async (journalId) => {
         try {
             // Call your API to delete the journal
@@ -56,6 +66,8 @@ const AdminDashboard = () => {
         }
     };
 
+
+    console.log(alertLogs);
     return (
         <div className="admin-dashboard">
             <header className="dashboard-header">
@@ -106,6 +118,7 @@ const AdminDashboard = () => {
                     </table>
                 </div>
 
+
                 <div className="list-container">
                     <h2>Journal List</h2>
                     <table>
@@ -151,6 +164,7 @@ const AdminDashboard = () => {
                     </table>
                 </div>
 
+
                 <div className="list-container">
                     <h2>Emergency Contact List</h2>
                     <table>
@@ -183,6 +197,51 @@ const AdminDashboard = () => {
                         </tbody>
                     </table>
                 </div>
+
+
+                <div className="list-container">
+                    <h2 className="alerts-logs-title">SOS Alert Logs</h2>
+                    <table className="table">
+                        <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Alert ID</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Sent By</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {alertLogs.map((log, index) => {
+                            const {date, time} = formatTimestamp(log.timestamp); // Format timestamp
+                            const statusStyle = log.status === "Sent"
+                                ? {backgroundColor: "#A8E6A3"} // Pastel green for "Sent"
+                                : log.status.startsWith("Failed")
+                                    ? {backgroundColor: "#F4A6A6"} // Pastel red for "Failed"
+                                    : {}; // Default style for other statuses
+
+                            return (
+                                <tr key={log.alertId}>
+                                    <td>{index + 1}</td>
+                                    <td>{log.alertId}</td>
+                                    <td>{date}</td>
+                                    <td>{time}</td>
+                                    <td>{log.latitude}</td>
+                                    <td>{log.longitude}</td>
+                                    <td>{getUserNameById(log.userId)}</td>
+                                    <td style={statusStyle}>{log.status}</td>
+                                </tr>
+                            );
+                        })}
+
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
         </div>
     );

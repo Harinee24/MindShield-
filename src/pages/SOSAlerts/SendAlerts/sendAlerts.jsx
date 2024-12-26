@@ -3,8 +3,16 @@ import axios from "axios";
 import "./SendAlerts.css";
 import Cookies from 'js-cookie';
 import {Link} from "react-router-dom";
+import { useEffect, useState } from "react";
+
 
 const SendAlerts = () => {
+
+    const userCookie = Cookies.get('user');
+    const userId = userCookie ? JSON.parse(userCookie).userId : null;
+    const username = userCookie ? JSON.parse(userCookie).name : null;
+
+
     // Function to handle getting user's location
     const getLocationAndSendAlert = () => {
         if (navigator.geolocation) {
@@ -29,15 +37,6 @@ const SendAlerts = () => {
 
     // Function to send SOS alert to the backend using Axios
     const sendSOSAlert = (latitude, longitude) => {
-        // Retrieve userId from cookies
-        const userCookie = Cookies.get('user');
-        const userId = userCookie ? JSON.parse(userCookie).userId : null;
-        const username = userCookie ? JSON.parse(userCookie).name : null;
-
-
-        console.log(userId);
-        console.log(username);
-
         toast.promise(
             axios.post(`http://localhost:8081/api/sos/alert`, null, {
                 params: {
@@ -67,16 +66,89 @@ const SendAlerts = () => {
         );
     };
 
+
+
+    const [logs, setLogs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        const fetchLogs = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8081/api/sos/alert-logs/${userId}`); // Replace with your API endpoint
+                setLogs(response.data);
+                setLoading(false);
+            } catch (err) {
+                setError("Failed to fetch logs.");
+                setLoading(false);
+            }
+        };
+
+        fetchLogs();
+    }, []);
+
+    const formatTimestamp = (timestamp) => {
+        const dateObj = new Date(timestamp);
+        const date = dateObj.toLocaleDateString(); // e.g., "12/26/2024"
+        const time = dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); // e.g., "14:30"
+        return { date, time };
+    };
+
     return (
         <section className="sos-alert-container">
+
             <div className="sos-button-container">
                 <h1>Send SOS Alert to saved contacts</h1>
                 <Link to="/sos-alert">
                     <button onClick={getLocationAndSendAlert} className="sos-alert-button">SOS ALERT</button>
                 </Link>
             </div>
+
+
+            <div className="alerts-logs-container">
+                <h1 className="alerts-logs-title">SOS Alert Logs</h1>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Alert ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {logs.map((log, index) => {
+                        const { date, time } = formatTimestamp(log.timestamp); // Format timestamp
+                        const statusStyle = log.status === "Sent"
+                            ? { backgroundColor: "#A8E6A3"} // Pastel green for "Sent"
+                            : log.status.startsWith("Failed")
+                                ? { backgroundColor: "#F4A6A6" } // Pastel red for "Failed"
+                                : {}; // Default style for other statuses
+
+                        return (
+                            <tr key={log.alertId}>
+                                <td>{index + 1}</td>
+                                <td>{log.alertId}</td>
+                                <td>{date}</td>
+                                <td>{time}</td>
+                                <td>{log.latitude}</td>
+                                <td>{log.longitude}</td>
+                                <td style={statusStyle}>{log.status}</td>
+                            </tr>
+                        );
+                    })}
+
+                    </tbody>
+                </table>
+            </div>
+
+
         </section>
     );
 };
+
 
 export default SendAlerts;

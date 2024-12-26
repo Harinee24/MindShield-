@@ -87,8 +87,8 @@ const RegisterForm = () => {
                     navigate("/login");
                 })
                 .catch((err) => {
-                    console.error("Error during registration: ", err);
-                    toast.error("An error occurred during registration. Please try again.");
+                    console.error("Error during registration: ", err.response.data.message);
+                    toast.error(err.response.data.message);
                 });
         } else {
             toast.error("Please fix the errors in the form.");

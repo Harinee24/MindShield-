@@ -16,6 +16,22 @@ const Navbar = () => {
         }
     }, []);
 
+
+
+    // useEffect(() => {
+    //
+    //     const updateUser = () => {
+    //         const userCookie = Cookies.get("user");
+    //         setUser(userCookie ? JSON.parse(userCookie) : null);
+    //         console.log("Calling updateUser function");
+    //     };
+    //
+    //     const interval = setInterval(updateUser, 0);
+    //
+    //     return () => clearInterval(interval);
+    // }, []);
+
+
     return (
         <>
             <div className="navbar-container">

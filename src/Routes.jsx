@@ -8,7 +8,7 @@ const Layout = lazy(() => import('./Layout.jsx'));
 const RegisterForm = lazy(() => import("./components/Register.jsx"));
 const Contact = lazy(() => import("./pages/SOSAlerts/Contact/contact.jsx"));
 const SendAlerts = lazy(() => import("./pages/SOSAlerts/SendAlerts/sendAlerts.jsx"));
-const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
+const Dashboard = lazy(() => import("./pages/UserDashboard.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
 const Journal = lazy(() => import("./pages/Journal/Journal.jsx"));
 const SingleJournal = lazy(() => import("./pages/Journal/SingleJournal.jsx"));
