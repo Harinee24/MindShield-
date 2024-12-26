@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import "./AdminDashboard.css";
-import { deleteJournal } from "../services/JournalService.jsx";
-import { toast } from "sonner";
+import {deleteJournal} from "../services/JournalService.jsx";
+import {toast} from "sonner";
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = {year: 'numeric', month: 'long', day: 'numeric'};
         return date.toLocaleDateString('en-GB', options);
     };
 
@@ -48,8 +48,8 @@ const AdminDashboard = () => {
     const formatTimestamp = (timestamp) => {
         const dateObj = new Date(timestamp);
         const date = dateObj.toLocaleDateString(); // e.g., "12/26/2024"
-        const time = dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); // e.g., "14:30"
-        return { date, time };
+        const time = dateObj.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}); // e.g., "14:30"
+        return {date, time};
     };
 
     const deleteThisJournal = async (journalId) => {

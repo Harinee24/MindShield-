@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./navbar.css";
 import logo from "/Logo.svg"
 
@@ -15,7 +15,6 @@ const Navbar = () => {
             setUser(null); // Ensure no user is set
         }
     }, []);
-
 
 
     // useEffect(() => {

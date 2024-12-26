@@ -3,7 +3,7 @@ import axios from "axios";
 import "./SendAlerts.css";
 import Cookies from 'js-cookie';
 import {Link} from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 
 const SendAlerts = () => {
@@ -67,7 +67,6 @@ const SendAlerts = () => {
     };
 
 
-
     const [logs, setLogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -90,8 +89,8 @@ const SendAlerts = () => {
     const formatTimestamp = (timestamp) => {
         const dateObj = new Date(timestamp);
         const date = dateObj.toLocaleDateString(); // e.g., "12/26/2024"
-        const time = dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); // e.g., "14:30"
-        return { date, time };
+        const time = dateObj.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}); // e.g., "14:30"
+        return {date, time};
     };
 
     return (
@@ -121,11 +120,11 @@ const SendAlerts = () => {
                     </thead>
                     <tbody>
                     {logs.map((log, index) => {
-                        const { date, time } = formatTimestamp(log.timestamp); // Format timestamp
+                        const {date, time} = formatTimestamp(log.timestamp); // Format timestamp
                         const statusStyle = log.status === "Sent"
-                            ? { backgroundColor: "#A8E6A3"} // Pastel green for "Sent"
+                            ? {backgroundColor: "#A8E6A3"} // Pastel green for "Sent"
                             : log.status.startsWith("Failed")
-                                ? { backgroundColor: "#F4A6A6" } // Pastel red for "Failed"
+                                ? {backgroundColor: "#F4A6A6"} // Pastel red for "Failed"
                                 : {}; // Default style for other statuses
 
                         return (

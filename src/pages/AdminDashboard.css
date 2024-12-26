@@ -35,14 +35,15 @@
     transition: .6s;
 
 }
+
 .summary-card:hover {
     background: var(--black2);
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.summary-card > p{
-    margin-top: 10px ;
+.summary-card > p {
+    margin-top: 10px;
     font-size: 20px;
     font-weight: bold;
 }
@@ -66,8 +67,8 @@
     min-width: 300px;
     background: #fff;
     border-radius: 10px;
-    box-shadow:0 0 40px -10px rgba(0,0,0,.3),
-    0 0 25px -15px rgba(0,0,0,.2);
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, .3),
+    0 0 25px -15px rgba(0, 0, 0, .2);
     padding: 20px;
     transition: .6s;
 }
@@ -100,20 +101,25 @@
     background-color: #f2f2f2;
     transition: .6s;
 }
-.list-container tbody > tr:hover{
+
+.list-container tbody > tr:hover {
     cursor: pointer;
     background-color: #ddd;
     transform: scale(1.05);
 }
-.list-container thead > tr > th{
+
+.list-container thead > tr > th {
     background-color: var(--orange);
 }
+
 .list-container thead > tr:hover {
     transform: none !important;
 }
+
 .list-container tbody > tr:hover > td:first-child {
     text-align: center;
 }
+
 .list-container tr:hover > td:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -124,7 +130,7 @@
     border-bottom-right-radius: 10px;
 }
 
-.admin-dashboard .delete-btn{
+.admin-dashboard .delete-btn {
     background-color: var(--light-red);
     border-radius: 5px;
     margin: 0 5px;
@@ -141,24 +147,10 @@
 }
 
 
-
 .list-container table {
     border-spacing: 0;
     border-radius: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*!* Alert Logs *!*/

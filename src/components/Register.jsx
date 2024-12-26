@@ -1,8 +1,8 @@
 import './login.css';
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { register } from '../services/AuthService.jsx';
-import { toast } from "sonner";
+import {Link, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {register} from '../services/AuthService.jsx';
+import {toast} from "sonner";
 
 const RegisterForm = () => {
     const navigate = useNavigate();

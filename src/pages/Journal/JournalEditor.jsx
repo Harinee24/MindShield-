@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
 import "./JournalEditor.css";
-import { createJournal } from "../../services/JournalService";
-import { toast } from "sonner";
+import {createJournal} from "../../services/JournalService";
+import {toast} from "sonner";
 import confetti from "canvas-confetti";
 
-const JournalEditor = ({ closePopup }) => { // Accept closePopup function as prop
+const JournalEditor = ({closePopup}) => { // Accept closePopup function as prop
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -38,7 +38,7 @@ const JournalEditor = ({ closePopup }) => { // Accept closePopup function as pro
                 angle: 60,
                 spread: 99,
                 startVelocity: 60,
-                origin: { x: 0, y: 0.5 },
+                origin: {x: 0, y: 0.5},
                 colors: colors,
             });
             confetti({
@@ -46,7 +46,7 @@ const JournalEditor = ({ closePopup }) => { // Accept closePopup function as pro
                 angle: 120,
                 spread: 99,
                 startVelocity: 60,
-                origin: { x: 1, y: 0.5 },
+                origin: {x: 1, y: 0.5},
                 colors: colors,
             });
 

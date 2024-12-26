@@ -1,6 +1,6 @@
-import { lazy, Suspense } from 'react';
+import {lazy, Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom';
 import './index.css';
 
 
@@ -24,29 +24,29 @@ const AdminDashboard = lazy(() => import("./pages/AdminDashboard.jsx"));
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Layout />}>
-            <Route index element={<App />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/sos-alert" element={<SendAlerts />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path={"/edit-profile"} element={<EditProfile />} />
-            <Route path="/journals" element={<Journal />} />
-            <Route path="/journal/:journalId" element={<SingleJournal />} /> {/* Dynamic route for single journal */}
-            <Route path="/shlok/:shlokId" element={<Slok />} />
-            <Route path="/forgotPassword" element={<ForgotPassword />} />
-            <Route path="/resetPassword/:token" element={<ResetPassword />} />
-            <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/" element={<Layout/>}>
+            <Route index element={<App/>}/>
+            <Route path="*" element={<ErrorPage/>}/>
+            <Route path="/register" element={<RegisterForm/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/sos-alert" element={<SendAlerts/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+            <Route path={"/edit-profile"} element={<EditProfile/>}/>
+            <Route path="/journals" element={<Journal/>}/>
+            <Route path="/journal/:journalId" element={<SingleJournal/>}/> {/* Dynamic route for single journal */}
+            <Route path="/shlok/:shlokId" element={<Slok/>}/>
+            <Route path="/forgotPassword" element={<ForgotPassword/>}/>
+            <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
+            <Route path="/admindashboard" element={<AdminDashboard/>}/>
 
         </Route>
     )
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <Suspense fallback={<div className="loading"><img src="/loading.svg" alt="loading..." /></div>}>
-        <RouterProvider router={router} />
+    <Suspense fallback={<div className="loading"><img src="/loading.svg" alt="loading..."/></div>}>
+        <RouterProvider router={router}/>
     </Suspense>
 );

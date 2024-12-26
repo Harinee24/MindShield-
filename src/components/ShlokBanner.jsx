@@ -44,29 +44,29 @@ const ShlokBanner = () => {
                     <h2>Positive Affirmations</h2>
                     {/*<p>We provide to you the best things for you</p>*/}
                 </div>
-                    <div className={"sectionCard"}>
-                        <div className={"hindiTextContainer"}>
-                            <p className={"hindiText"}>“{shlok.sanskritShlok}”</p>
-                        </div>
-
-                        <div className={"englishTextContainer"}>
-                            <p className={"englishText"}>{shlok.englishShlok}</p>
-                        </div>
-
-                        <div className={"hindiTextContainer"}>
-                            <p className={"hindiText"}>“{shlok.hindiMeaning}”</p>
-                        </div>
-
-                        <div className={"englishTextContainer"}>
-                            <p className={"englishText"}>{shlok.englishMeaning}</p>
-                        </div>
+                <div className={"sectionCard"}>
+                    <div className={"hindiTextContainer"}>
+                        <p className={"hindiText"}>“{shlok.sanskritShlok}”</p>
                     </div>
+
+                    <div className={"englishTextContainer"}>
+                        <p className={"englishText"}>{shlok.englishShlok}</p>
+                    </div>
+
+                    <div className={"hindiTextContainer"}>
+                        <p className={"hindiText"}>“{shlok.hindiMeaning}”</p>
+                    </div>
+
+                    <div className={"englishTextContainer"}>
+                        <p className={"englishText"}>{shlok.englishMeaning}</p>
+                    </div>
+                </div>
 
 
             </section>
 
         </>
-);
+    );
 };
 
 export default ShlokBanner;

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { toast } from 'sonner';
-import { resetPassword } from '../services/AuthService.jsx'; // Replace with actual service function
+import {useState} from 'react';
+import {toast} from 'sonner';
+import {resetPassword} from '../services/AuthService.jsx'; // Replace with actual service function
 import './forgotPassword.css';
 
 const ForgotPassword = () => {
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
         e.preventDefault();
 
         if (validate()) {
-            resetPassword({ email })
+            resetPassword({email})
                 .then(() => {
                     toast.success('Password reset link sent to your email.');
                 })

@@ -30,7 +30,7 @@ export function TeamCard() {
         <div className="team-card-container">
             {teamMembers.map((member, index) => (
                 <div key={index} className="team-card">
-                    <img src={member.src} alt={member.name} className="team-card-image" />
+                    <img src={member.src} alt={member.name} className="team-card-image"/>
                     <h3 className="team-card-name">{member.name}</h3>
                     <p className="team-card-designation">{member.designation}</p>
                     <p className="team-card-quote">{member.quote}</p>

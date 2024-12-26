@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
-import { toast } from "sonner";
+import {toast} from "sonner";
 import editIcon from "/camera.png";
 import "./EditProfile.css";
 

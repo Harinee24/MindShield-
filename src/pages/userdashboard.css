@@ -60,14 +60,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* SOS Contact Section */
 .other-sos-container {
     margin: 2rem auto;
@@ -82,7 +74,8 @@
     align-items: center;
 
 }
-.emergency-container{
+
+.emergency-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -128,9 +121,6 @@
 }
 
 
-
-
-
 /* SOS Card */
 .sos-card {
     margin-bottom: 1.5rem;
@@ -172,7 +162,7 @@
     gap: 1rem;
 }
 
-.dashboard-container{
+.dashboard-container {
     width: 100%;
 }
 
@@ -195,6 +185,7 @@
 .dashboard-left-container > h1 > span {
     color: #FF8852;
 }
+
 .dashboard-container > .dashboard-hero-section-container > .dashboard-left-container > h1 {
     font-size: 2rem;
 }
@@ -216,6 +207,7 @@
     color: white;
 
 }
+
 .dashboard-container > .dashboard-hero-section-container > .dashboard-left-container > a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -223,11 +215,11 @@
 }
 
 
-.dashboard-container > .dashboard-hero-section-container > .dashboard-right-container > img{
+.dashboard-container > .dashboard-hero-section-container > .dashboard-right-container > img {
     width: 20rem;
 }
 
-.sos-button-container{
+.sos-button-container {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -238,13 +230,15 @@
 
     background-color: #F5F5FA;
     border-radius: 30px;
-padding-bottom: 3rem;
+    padding-bottom: 3rem;
 }
-.sos-button-container > h1  {
+
+.sos-button-container > h1 {
     font-size: 2rem;
     color: #313A51;
     margin-top: 2rem;
 }
+
 .sos-button-container > a {
     background: #F5F5FA;
     width: 250px;
@@ -259,6 +253,7 @@ padding-bottom: 3rem;
 
 
 }
+
 .sos-button-container > a > button {
     margin: 1rem 0 1rem 0;
     font-size: 1.4rem;
@@ -274,7 +269,7 @@ padding-bottom: 3rem;
     height: 200px;
     border-radius: 100%;
 
-    background: radial-gradient( #FFAD59 0%, #FF7E7B 100%);
+    background: radial-gradient(#FFAD59 0%, #FF7E7B 100%);
     text-decoration: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -287,7 +282,7 @@ padding-bottom: 3rem;
     height: 220px;
 }
 
-.dashboard-emergency-container{
+.dashboard-emergency-container {
     margin-top: 2rem;
     font-size: 1.5rem;
     display: flex;
@@ -295,10 +290,10 @@ padding-bottom: 3rem;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    color:  #313A51;
+    color: #313A51;
 }
 
-.emergency-list-container{
+.emergency-list-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -311,7 +306,7 @@ padding-bottom: 3rem;
 }
 
 
-.line-div{
+.line-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -320,6 +315,7 @@ padding-bottom: 3rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+
 .line-div > div {
     width: 500px;
     border-bottom: 1px solid #ddd;

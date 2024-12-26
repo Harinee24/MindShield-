@@ -1,7 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 import "./EmergencyCard.css";
 
-const EmergencyCard = ({ image, name, color, contact }) => {
+const EmergencyCard = ({image, name, color, contact}) => {
     const [isHovered, setIsHovered] = useState(false);
     const cardStyle = {
         backgroundColor: isHovered ? color : " ",
@@ -15,8 +15,8 @@ const EmergencyCard = ({ image, name, color, contact }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="emergency-card-image" style={{ background: color }}>
-                <img src={image} alt="Emergency image" />
+            <div className="emergency-card-image" style={{background: color}}>
+                <img src={image} alt="Emergency image"/>
             </div>
             <div className="emergency-card-content">
                 <p>{name}</p>

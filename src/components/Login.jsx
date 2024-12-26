@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { login } from '../services/AuthService.jsx';
-import { toast } from 'sonner';
+import {login} from '../services/AuthService.jsx';
+import {toast} from 'sonner';
 import './login.css';
 
 const LoginForm = () => {
@@ -66,7 +66,7 @@ const LoginForm = () => {
                         name: resp.name,
                         email: resp.email,
                     };
-                    Cookies.set('user', JSON.stringify(user), { expires: 7, secure: true });
+                    Cookies.set('user', JSON.stringify(user), {expires: 7, secure: true});
                     toast.success('User logged in successfully');
                     navigate('/contact');
                 })
@@ -113,7 +113,7 @@ const LoginForm = () => {
                     {errors.password && <span className="error-text">{errors.password}</span>}
                 </div>
                 <p className="signup-text">
-                Forgot password? <Link to="/forgotPassword">Reset Password</Link>
+                    Forgot password? <Link to="/forgotPassword">Reset Password</Link>
                 </p>
 
                 {/* Login Button */}
@@ -122,7 +122,6 @@ const LoginForm = () => {
                 </button>
             </form>
 
-            
 
             {/* Sign Up Link */}
             <p className="signup-text">
