@@ -1,19 +1,14 @@
 import {useState} from 'react';
 import {toast} from 'sonner';
-import {resetPassword} from '../services/AuthService.jsx'; // Replace with actual service function
+import {resetPassword} from '../services/AuthService.jsx';
 import './forgotPassword.css';
 
 const ForgotPassword = () => {
-    // State for form inputs
     const [email, setEmail] = useState('');
-
-    // State for form errors
     const [error, setError] = useState('');
-
-    // Handle input change
     const handleInputChange = (value) => {
         setEmail(value);
-        setError(''); // Clear the error when user starts typing
+        setError('');
     };
 
     // Validate email field

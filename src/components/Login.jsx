@@ -61,18 +61,23 @@ const LoginForm = () => {
         if (validate()) {
             login(data)
                 .then((resp) => {
+                    console.log("User Response: ", resp);
                     const user = {
                         userId: resp.userId,
                         name: resp.name,
                         email: resp.email,
                     };
+
+                    localStorage.setItem("profileImage", resp.profileImage.imageData);
+                    localStorage.setItem("profileImageType", resp.profileImage.imageType);
+
                     Cookies.set('user', JSON.stringify(user), {expires: 7, secure: true});
                     toast.success('User logged in successfully');
                     navigate('/contact');
                 })
                 .catch((err) => {
                     console.error('Error during login:', err);
-                    toast.error('Invalid credentials. Please try again.');
+                    toast.error('Invalid credentials. Please try again.', err);
                 });
         }
     };

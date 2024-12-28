@@ -4,14 +4,16 @@ import Cookies from "js-cookie";
 import {toast} from "sonner";
 import editIcon from "/camera.png";
 import "./EditProfile.css";
+import axios from "axios";
 
 const EditProfile = () => {
     const [user, setUser] = useState(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [profileImage, setProfileImage] = useState(null); // Store the file
-    const [previewImage, setPreviewImage] = useState(""); // For image preview
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [profileImage, setProfileImage] = useState(null);
+    const [previewImage, setPreviewImage] = useState("https://randomuser.me/api/portraits/men/75.jpg");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -22,7 +24,13 @@ const EditProfile = () => {
             setUser(userData);
             setName(userData.name);
             setEmail(userData.email);
-            setPreviewImage(userData.profileImage || "https://randomuser.me/api/portraits/men/75.jpg");
+
+            const storedImage = localStorage.getItem("profileImage");
+            const storedImageType = localStorage.getItem("profileImageType");
+            if (storedImage && storedImageType) {
+                const makeImageUrl = "data:"+storedImageType+";base64,"+storedImage;
+                setPreviewImage(makeImageUrl);
+            }
         } else {
             navigate("/login");
         }
@@ -45,34 +53,52 @@ const EditProfile = () => {
     };
 
     const handleUpdateProfile = async () => {
+
+        if (password && password !== confirmPassword) {
+            toast.error("Confirm Password doesn't match with the password!");
+            return;
+        }
+
         try {
             setLoading(true);
-            const userId = user.userId;
+            const userId = user.userId
 
+            // Create the profileData object
+            const profileData = {
+                userId: userId,
+                name: name,
+                email: email,
+                ...(password && { password: password }), // Only include password if it's set
+            };
+
+            // Create FormData
             const formData = new FormData();
-            formData.append("userId", userId);
-            formData.append("name", name);
-            formData.append("email", email);
-            if (password) formData.append("password", password);
-            if (profileImage) formData.append("profileImage", profileImage); // Append file
+            formData.append("profileData", new Blob([JSON.stringify(profileData)], {type: "application/json"})); // Send profileData as JSON string
+            if (profileImage) {
+                formData.append("profileImage", profileImage); // Send profileImage as a file
+            }
 
-            const response = await fetch("http://localhost:8080/api/auth/update-profile", {
-                method: "PUT",
-                body: formData,
+            // Make the API request
+            const response = await axios.post("http://localhost:8080/api/auth/update-profile", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             });
 
-            if (response.ok) {
-                const updatedUser = await response.json();
-                console.log(updatedUser);
+            if (response.status === 200) {
+                const updatedUser = {
+                    userId: response.data.userId,
+                    name: response.data.name,
+                    email: response.data.email
+                };
                 Cookies.set("user", JSON.stringify(updatedUser));
+                localStorage.setItem("profileImage", response.data.profileImage.imageData);
+                localStorage.setItem("profileImageType", response.data.profileImage.imageType);
                 toast.success("Profile updated successfully!");
                 navigate("/profile");
-            } else {
-                const errorData = await response.json();
-                toast.error(errorData.message || "Failed to update profile!");
             }
         } catch (error) {
-            toast.error(error.message || "An error occurred!");
+            toast.error(error.response?.data || "An error occurred!");
         } finally {
             setLoading(false);
         }
@@ -121,8 +147,8 @@ const EditProfile = () => {
                 <input
                     type="password"
                     placeholder="Confirm New Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 
                 <button className="update-button" onClick={handleUpdateProfile} disabled={loading}>

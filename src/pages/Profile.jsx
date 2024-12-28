@@ -6,8 +6,9 @@ import Cookies from 'js-cookie';
 const Profile = () => {
 
     const [user, setUser] = useState(null);
-    const [image, setImage] = useState("https://randomuser.me/api/portraits/men/75.jpg");
+    const [image, setImage] = useState("");
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const userCookie = Cookies.get('user');
@@ -17,12 +18,22 @@ const Profile = () => {
         } else {
             navigate('/login');
         }
+
+        const storedImage = localStorage.getItem("profileImage");
+        const storedImageType = localStorage.getItem("profileImageType");
+        if (storedImage) {
+            console.log("I am setting Image..")
+            const makeImageUrl = "data:image/jpeg;base64,"+storedImage;
+            setImage(makeImageUrl);
+            console.log("the set Image is: ", image);
+        }
     }, [navigate]);
 
     if (!user) return <div>Loading...</div>;
 
     const handleLogout = () => {
-        Cookies.remove('user'); // Remove the user cookie
+        Cookies.remove('user');
+        localStorage.removeItem('profileImage');
         navigate('/'); // Redirect to the homepage
     };
 
@@ -33,7 +44,7 @@ const Profile = () => {
                 <div className="profile-card">
                     <h1>Your Profile</h1>
                     <img
-                        src={user?.profileImage || "https://randomuser.me/api/portraits/men/75.jpg"}
+                        src={`${image}` || "https://randomuser.me/api/portraits/men/75.jpg"}
                         alt="Profile"
                         className="profile-image"
                     />
