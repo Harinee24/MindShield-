@@ -23,7 +23,7 @@ const Profile = () => {
         const storedImageType = localStorage.getItem("profileImageType");
         if (storedImage) {
             console.log("I am setting Image..")
-            const makeImageUrl = "data:image/jpeg;base64,"+storedImage;
+            const makeImageUrl = "data:image/jpeg;base64," + storedImage;
             setImage(makeImageUrl);
             console.log("the set Image is: ", image);
         }

@@ -82,32 +82,32 @@
     }
 }
 
-.button{
+.button {
     padding: 0.8rem 3rem;
     color: #F5F5FA;
-    background: linear-gradient( #FFAD59 0%, #FF7E7B 80%);
+    background: linear-gradient(#FFAD59 0%, #FF7E7B 80%);
     border-radius: 0.5rem;
     font-size: 1.2rem;
     font-weight: 600;
-  }
+}
 
-  .button:hover {
+.button:hover {
     text-decoration: none;
     background: #FF8852;
     cursor: pointer;
-  }
+}
 
-  .ThirdComp {
+.ThirdComp {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     margin-top: 50px;
-    
-  }
 
-  .content{
+}
+
+.content {
     padding-left: 100px;
 
-  }
+}

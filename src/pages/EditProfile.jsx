@@ -28,7 +28,7 @@ const EditProfile = () => {
             const storedImage = localStorage.getItem("profileImage");
             const storedImageType = localStorage.getItem("profileImageType");
             if (storedImage && storedImageType) {
-                const makeImageUrl = "data:"+storedImageType+";base64,"+storedImage;
+                const makeImageUrl = "data:" + storedImageType + ";base64," + storedImage;
                 setPreviewImage(makeImageUrl);
             }
         } else {
@@ -68,7 +68,7 @@ const EditProfile = () => {
                 userId: userId,
                 name: name,
                 email: email,
-                ...(password && { password: password }), // Only include password if it's set
+                ...(password && {password: password}), // Only include password if it's set
             };
 
             // Create FormData
