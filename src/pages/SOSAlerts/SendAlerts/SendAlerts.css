@@ -1,47 +1,47 @@
-.sendAlerts{
+.sendAlerts {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 63.5vh;
 }
 
 .sendAlerts > h1 {
     margin-bottom: 1rem;
 }
 
-.sos-alert-container{
+.sos-alert-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: 100%;
+    flex-direction: column;
 
 }
 
 
-.sos-button-container{
+.sos-button-container {
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 3rem;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 
     background-color: #F5F5FA;
     border-radius: 30px;
-    padding-bottom: 3rem;
     width: 100%;
-    height: 80vh;
+
+    padding: 3rem 0 4rem 0;
 }
-.sos-button-container > h1  {
+
+.sos-button-container > h1 {
     font-size: 2rem;
     color: #313A51;
     text-align: center;
 }
+
 .sos-button-container > a {
     background: #F5F5FA;
     width: 250px;
@@ -56,6 +56,7 @@
 
 
 }
+
 .sos-button-container > a > button {
     margin: 1rem 0 1rem 0;
     font-size: 1.4rem;
@@ -71,7 +72,7 @@
     height: 200px;
     border-radius: 100%;
 
-    background: radial-gradient( #FFAD59 0%, #FF7E7B 100%);
+    background: radial-gradient(#FFAD59 0%, #FF7E7B 100%);
     text-decoration: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -82,4 +83,60 @@
     font-size: 2rem;
     width: 220px;
     height: 220px;
+}
+
+
+/* Alert Logs */
+.alerts-logs-container {
+    font-family: Arial, sans-serif;
+}
+
+.alerts-logs-container > .alerts-logs-title {
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: var(--orange);
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Hover effect */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Loading and error styles */
+.loading,
+.error {
+    text-align: center;
+    color: #888;
+    font-size: 18px;
+    margin-top: 20px;
 }

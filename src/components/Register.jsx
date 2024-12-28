@@ -1,8 +1,8 @@
 import './login.css';
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { register } from '../services/AuthService.jsx';
-import { toast } from "sonner";
+import {Link, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {register} from '../services/AuthService.jsx';
+import {toast} from "sonner";
 
 const RegisterForm = () => {
     const navigate = useNavigate();
@@ -87,8 +87,8 @@ const RegisterForm = () => {
                     navigate("/login");
                 })
                 .catch((err) => {
-                    console.error("Error during registration: ", err);
-                    toast.error("An error occurred during registration. Please try again.");
+                    console.error("Error during registration: ", err.response.data.message);
+                    toast.error(err.response.data.message);
                 });
         } else {
             toast.error("Please fix the errors in the form.");

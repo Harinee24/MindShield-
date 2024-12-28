@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getJournals, deleteJournal } from "../../services/JournalService.jsx"; // Assuming this function fetches the journal data by id
+import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {deleteJournal, getJournals} from "../../services/JournalService.jsx";
 import './SingleJournal.css';
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 import {toast} from "sonner";
 
 
 const SingleJournal = () => {
-    const { journalId } = useParams();
+    const {journalId} = useParams();
     const [journal, setJournal] = useState(null);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -33,7 +32,7 @@ const SingleJournal = () => {
     // Function to format the date
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = {year: 'numeric', month: 'long', day: 'numeric'};
         return date.toLocaleDateString('en-US', options);
     };
 

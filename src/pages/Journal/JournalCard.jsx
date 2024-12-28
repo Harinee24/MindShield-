@@ -1,6 +1,6 @@
 import './JournalCard.css';
 
-const JournalCard = ({ journalbanner, journaltitle, journalbody }) => {
+const JournalCard = ({journalbanner, journaltitle, journalbody}) => {
     // Truncate body to 2-3 lines
     const truncatedBody = journalbody.length > 200 ? `${journalbody.slice(0, 200)}...` : journalbody;
 

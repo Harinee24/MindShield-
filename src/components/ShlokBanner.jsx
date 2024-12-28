@@ -14,8 +14,6 @@ const ShlokBanner = () => {
             try {
                 const response = await axios.get(API_URL);
                 setShlok(response.data);
-
-                console.log("Shlok Data: ",response.data);
             } catch (error) {
                 console.error("Error fetching the shlok:", error);
             }
@@ -23,7 +21,6 @@ const ShlokBanner = () => {
         fetchShlok();
     }, []);
 
-    console.log(shlok);
 
     // Conditionally render content only when `shlok` is not null
     if (!shlok) {
@@ -70,29 +67,29 @@ It can be tainted by desires and impure thoughts.</h4>
                     <h2>Positive Affirmations</h2>
                     {/*<p>We provide to you the best things for you</p>*/}
                 </div>
-                    <div className={"sectionCard"}>
-                        <div className={"hindiTextContainer"}>
-                            <p className={"hindiText"}>“{shlok.sanskritShlok}”</p>
-                        </div>
-
-                        <div className={"englishTextContainer"}>
-                            <p className={"englishText"}>{shlok.englishShlok}</p>
-                        </div>
-
-                        <div className={"hindiTextContainer"}>
-                            <p className={"hindiText"}>“{shlok.hindiMeaning}”</p>
-                        </div>
-
-                        <div className={"englishTextContainer"}>
-                            <p className={"englishText"}>{shlok.englishMeaning}</p>
-                        </div>
+                <div className={"sectionCard"}>
+                    <div className={"hindiTextContainer"}>
+                        <p className={"hindiText"}>“{shlok.sanskritShlok}”</p>
                     </div>
+
+                    <div className={"englishTextContainer"}>
+                        <p className={"englishText"}>{shlok.englishShlok}</p>
+                    </div>
+
+                    <div className={"hindiTextContainer"}>
+                        <p className={"hindiText"}>“{shlok.hindiMeaning}”</p>
+                    </div>
+
+                    <div className={"englishTextContainer"}>
+                        <p className={"englishText"}>{shlok.englishMeaning}</p>
+                    </div>
+                </div>
 
 
             </section>
 
         </>
-);
+    );
 };
 
 export default ShlokBanner;

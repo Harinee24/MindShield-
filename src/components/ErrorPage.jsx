@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 function ErrorPage() {
     const navigate = useNavigate();
@@ -24,7 +24,8 @@ function ErrorPage() {
                 cursor: 'pointer',
                 textDecoration: 'none',
                 color: 'black',
-            }}>Go Back</button>
+            }}>Go Back
+            </button>
         </div>
     );
 }

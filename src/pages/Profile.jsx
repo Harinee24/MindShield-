@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "./Profile.css";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Cookies from 'js-cookie';
 
 const Profile = () => {
 
     const [user, setUser] = useState(null);
-    const [image,setImage]=useState("https://randomuser.me/api/portraits/men/75.jpg");
-    const navigate=useNavigate();
+    const [image, setImage] = useState("https://randomuser.me/api/portraits/men/75.jpg");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const userCookie = Cookies.get('user');

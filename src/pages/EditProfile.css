@@ -62,10 +62,11 @@
     left: 45px;
 }
 
-.profile-image-label:hover , .profile-image , .edit-icon   {
+.profile-image-label:hover, .profile-image, .edit-icon {
     cursor: pointer;
     transform: scale(1.05);
 }
+
 input[type="file"] {
     display: none;
 }

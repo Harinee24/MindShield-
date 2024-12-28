@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./navbar.css";
 import logo from "/Logo.svg"
 
@@ -15,6 +15,21 @@ const Navbar = () => {
             setUser(null); // Ensure no user is set
         }
     }, []);
+
+
+    // useEffect(() => {
+    //
+    //     const updateUser = () => {
+    //         const userCookie = Cookies.get("user");
+    //         setUser(userCookie ? JSON.parse(userCookie) : null);
+    //         console.log("Calling updateUser function");
+    //     };
+    //
+    //     const interval = setInterval(updateUser, 0);
+    //
+    //     return () => clearInterval(interval);
+    // }, []);
+
 
     return (
         <>

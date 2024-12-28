@@ -11,9 +11,7 @@ function Layout() {
             <Suspense fallback={<div className={"loading"}><img src={"/loading.svg"} alt={"loading..."}/></div>}>
                 <main>
                     <Navbar/>
-                    {/*<LoadInfo/>*/}
                     <Outlet/>
-
                 </main>
                 <Footer/>
                 <Toaster position="bottom-right" richColors={true}/>

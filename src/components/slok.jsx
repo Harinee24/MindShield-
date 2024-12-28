@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import './shlok.css';
 
 const Slok = () => {
-    const {shlokId } = useParams();
+    const {shlokId} = useParams();
     const [shlok, setShlok] = useState(null);
 
     useEffect(() => {

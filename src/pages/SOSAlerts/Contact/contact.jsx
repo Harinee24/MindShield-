@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import "./contact.css";
 import Cookies from "js-cookie";
-import { toast} from "sonner";
+import {toast} from "sonner";
 import {useNavigate} from "react-router-dom";
 
 const Contact = () => {
@@ -22,7 +22,7 @@ const Contact = () => {
         if (userCookie) {
             const parsedUser = JSON.parse(userCookie); // Parse cookie value
             setUser(parsedUser); // Set the user data in the state
-        }else {
+        } else {
             navigate('/login'); // Redirect to login if user is not logged in
         }
     }, [navigate]);
@@ -47,7 +47,6 @@ const Contact = () => {
     useEffect(() => {
         fetchContacts();
     }, []);
-
 
 
     // Add a new contact
@@ -95,7 +94,7 @@ const Contact = () => {
             await axios.delete(
                 `http://localhost:8081/api/sos/delete-contact/${userId}`,
                 {
-                    params: { email, phoneNumber },
+                    params: {email, phoneNumber},
                 }
             );
             fetchContacts();
@@ -135,12 +134,12 @@ const Contact = () => {
             </div>
 
             {/* Add More Contact Button */}
-                <button className="add-contact-btn" onClick={() => setShowPopup(true)}>
-            Add More Contact
-        </button>
+            <button className="add-contact-btn" onClick={() => setShowPopup(true)}>
+                Add More Contact
+            </button>
 
-    {/* Popup Form */}
-    {showPopup && (
+            {/* Popup Form */}
+            {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-form">
                         <h3 className="form-title">Add Emergency Contact</h3>

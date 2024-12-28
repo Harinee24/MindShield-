@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
-import { resetPasswordWithToken, validateToken } from '../services/AuthService'; // Replace with actual service functions
+import {useEffect, useState} from 'react';
+import {toast} from 'sonner';
+import {useNavigate, useParams} from 'react-router-dom'; // Import useParams and useNavigate
+import {resetPasswordWithToken, validateToken} from '../services/AuthService'; // Replace with actual service functions
 import './forgotPassword.css'; // Use the same CSS for consistency
 
 const ResetPassword = () => {
-    const { token } = useParams(); // Get token from the URL params
+    const {token} = useParams(); // Get token from the URL params
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');

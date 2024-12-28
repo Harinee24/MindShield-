@@ -16,11 +16,11 @@ export const login = async (auth_details) => {
 
 // Reset Password function
 export const resetPassword = async (email) => {
-    const response = await axios.post(`${API_URL}/resetPassword`, { email });
+    const response = await axios.post(`${API_URL}/resetPassword`, {email});
     return response.data;
 }
 
 export const resetPasswordWithToken = async (token, newPassword) => {
-    const response = await axios.post(`${API_URL}/resetPassword/${token}`, { newPassword });
+    const response = await axios.post(`${API_URL}/resetPassword/${token}`, {newPassword});
     return response.data;
 }

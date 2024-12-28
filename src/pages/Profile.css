@@ -1,4 +1,4 @@
-.profile{
+.profile {
     height: 63.5vh;
 }
 
@@ -45,7 +45,7 @@
     color: #555;
 }
 
-.logout-button{
+.logout-button {
     font-size: 1rem;
     font-weight: normal;
     margin-top: 2rem;
@@ -58,7 +58,7 @@
 
 .logout-button:hover {
     cursor: pointer;
-    background: radial-gradient( #FFAD59 0%, #FF7E7B 100%);
+    background: radial-gradient(#FFAD59 0%, #FF7E7B 100%);
 }
 
 .edit-profile-button {
