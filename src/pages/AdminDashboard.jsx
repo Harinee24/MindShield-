@@ -3,31 +3,48 @@ import axios from "axios";
 import "./AdminDashboard.css";
 import {deleteJournal} from "../services/JournalService.jsx";
 import {toast} from "sonner";
+import Cookies from "js-cookie";
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [journals, setJournals] = useState([]);
     const [emergencyContact, setEmergencyContact] = useState([]);
     const [alertLogs, setAlertlogs] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(true);
     let contactCounts = 0;
 
     useEffect(() => {
+        const userCookie = Cookies.get('user');
+        const userData = JSON.parse(userCookie)
+
         const fetchDetails = async () => {
             try {
-                const [usersRes, journalsRes, emergencyContactsRes, alertLogsRes] = await Promise.all([
-                    axios.get("http://localhost:8080/api/get/all/users"),
+                const usersRes = await axios.get("http://localhost:8080/api/admin/get/all/users",{
+                    params: {
+                        userId: userData.userId,
+                    }
+                });
+                setUsers(usersRes.data);
+
+                // If users are fetched successfully, then fetch the other data
+                const [journalsRes, emergencyContactsRes, alertLogsRes] = await Promise.all([
                     axios.get("http://localhost:8082/api/journals/all"),
                     axios.get("http://localhost:8081/api/admin/allcontact"),
                     axios.get("http://localhost:8081/api/admin/alertlogs")
                 ]);
 
-                setUsers(usersRes.data);
                 setJournals(journalsRes.data);
                 setEmergencyContact(emergencyContactsRes.data);
                 setAlertlogs(alertLogsRes.data);
-
             } catch (error) {
                 console.error("Error fetching details", error);
+
+                // If the error occurs while fetching users, assume no admin access
+                if (error.response && error.response.status === 401) {
+                    setIsAdmin(false);
+                } else {
+                    toast.error("An unexpected error occurred.");
+                }
             }
         };
 
@@ -36,43 +53,59 @@ const AdminDashboard = () => {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        const options = {year: 'numeric', month: 'long', day: 'numeric'};
-        return date.toLocaleDateString('en-GB', options);
+        const options = {year: "numeric", month: "long", day: "numeric"};
+        return date.toLocaleDateString("en-GB", options);
     };
 
     const getUserNameById = (userId) => {
-        const user = users.find(user => user.userId === userId);
-        return user ? user.name : 'Unknown User';
+        const user = users.find((user) => user.userId === userId);
+        return user ? user.name : "Unknown User";
     };
 
     const formatTimestamp = (timestamp) => {
         const dateObj = new Date(timestamp);
-        const date = dateObj.toLocaleDateString(); // e.g., "12/26/2024"
-        const time = dateObj.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}); // e.g., "14:30"
+        const date = dateObj.toLocaleDateString();
+        const time = dateObj.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
         return {date, time};
     };
 
     const deleteThisJournal = async (journalId) => {
         try {
-            // Call your API to delete the journal
             const response = await deleteJournal(journalId);
             toast.success(response); // Show success message
-
-            // Update the journals state by removing the deleted journal
-            setJournals(prevJournals => prevJournals.filter(journal => journal.id !== journalId));
+            setJournals((prevJournals) =>
+                prevJournals.filter((journal) => journal.id !== journalId)
+            );
         } catch (error) {
             console.error("Error deleting journal", error);
             toast.error("Error deleting journal.");
         }
     };
 
+    if (!isAdmin) {
+        return (
+            <div className="admin-dashboard">
+                <header className="dashboard-header">
+                    <h1>Access Denied</h1>
+                </header>
+                <p>You are not an admin and do not have access to this dashboard.</p>
+            </div>
+        );
+    }
 
-    console.log(alertLogs);
+
+    console.log("User: ", users);
+    console.log("Journal: ", journals);
+    console.log("Contacts: ",emergencyContact);
+    console.log("Logs: ", alertLogs);
+
     return (
+
         <div className="admin-dashboard">
             <header className="dashboard-header">
                 <h1>ShieldMe Admin Dashboard</h1>
             </header>
+
 
             <div className="dashboard-summary">
                 <div className="summary-card">
@@ -83,7 +116,6 @@ const AdminDashboard = () => {
                     <h2>Total Journals</h2>
                     <p>{journals.length}</p>
                 </div>
-
                 <div className="summary-card">
                     <h2>Total Emergency Contact</h2>
                     <p>{emergencyContact.length}</p>
@@ -91,7 +123,6 @@ const AdminDashboard = () => {
             </div>
 
             <div className="dashboard-lists">
-
                 <div className="list-container">
                     <h2>User List</h2>
                     <table>
@@ -117,7 +148,6 @@ const AdminDashboard = () => {
                         </tbody>
                     </table>
                 </div>
-
 
                 <div className="list-container">
                     <h2>Journal List</h2>

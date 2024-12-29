@@ -26,6 +26,8 @@ const Profile = () => {
             const makeImageUrl = "data:image/jpeg;base64," + storedImage;
             setImage(makeImageUrl);
             console.log("the set Image is: ", image);
+        } else {
+            setImage("https://randomuser.me/api/portraits/men/75.jpg")
         }
     }, [navigate]);
 
@@ -34,6 +36,8 @@ const Profile = () => {
     const handleLogout = () => {
         Cookies.remove('user');
         localStorage.removeItem('profileImage');
+        localStorage.removeItem('profileImageType');
+
         navigate('/'); // Redirect to the homepage
     };
 
@@ -44,7 +48,7 @@ const Profile = () => {
                 <div className="profile-card">
                     <h1>Your Profile</h1>
                     <img
-                        src={`${image}` || "https://randomuser.me/api/portraits/men/75.jpg"}
+                        src={`${image}`}
                         alt="Profile"
                         className="profile-image"
                     />

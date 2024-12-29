@@ -14,6 +14,7 @@ const Contact = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
+
     // Check for user login on component load
     useEffect(() => {
         const userCookie = Cookies.get('user');
@@ -37,6 +38,8 @@ const Contact = () => {
             const response = await axios.get(
                 `http://localhost:8081/api/sos/get-contacts/${userId}`
             );
+
+            console.log("This is contact response: " , response.data);
             setContacts(response.data.contacts || []);
         } catch (error) {
             const errorMsg = error.response?.data?.message || error.message || "Error fetching contacts";
@@ -68,8 +71,6 @@ const Contact = () => {
             userId,
             contact,
         };
-
-        console.log(contactData);
 
         try {
             await axios.post(

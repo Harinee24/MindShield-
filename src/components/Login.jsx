@@ -67,9 +67,10 @@ const LoginForm = () => {
                         name: resp.name,
                         email: resp.email,
                     };
-
-                    localStorage.setItem("profileImage", resp.profileImage.imageData);
-                    localStorage.setItem("profileImageType", resp.profileImage.imageType);
+                    if(resp.profileImage.imageData !== null && resp.profileImage.imageType !== null ) {
+                        localStorage.setItem("profileImage", resp.profileImage.imageData);
+                        localStorage.setItem("profileImageType", resp.profileImage.imageType);
+                    }
 
                     Cookies.set('user', JSON.stringify(user), {expires: 7, secure: true});
                     toast.success('User logged in successfully');

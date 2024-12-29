@@ -31,7 +31,7 @@ const ShlokBanner = () => {
         </div>
         <div className="ThirdComp">
             <div className="bg">
-                <img src="src/assets/mental-health-wellbeing-5-pwmuuh4ttx6aqfhxeaziaj18coc31oxnd95cs7i940.png"
+                <img src="/mental-health-wellbeing.png"
                      alt="bg" width="693" height="598"/>
             </div>
             <div className='content'>
@@ -69,7 +69,7 @@ const ShlokBanner = () => {
                 </div>
                 <div className="ThirdComp">
                     <div className="bg">
-                        <img src="src/assets/mental-health-wellbeing-5-pwmuuh4ttx6aqfhxeaziaj18coc31oxnd95cs7i940.png"
+                        <img src="/mental-health-wellbeing.png"
                              alt="bg" width="693" height="598"/>
                     </div>
                     <div className='content'>
