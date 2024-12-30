@@ -1,4 +1,3 @@
-/* Editor Container */
 .editor-container {
     min-width: 800px;
     max-width: 1340px;
@@ -8,11 +7,10 @@
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    max-height: 80vh; /* Optional: Limit the height of the editor container */
-    overflow: hidden; /* Hide anything overflowing the container */
+    max-height: 100vh;
+    overflow: hidden;
 }
 
-/* Header Buttons */
 .editor-header {
     display: flex;
     gap: 10px;
@@ -36,7 +34,6 @@
     background: #e6e6e6;
 }
 
-/* Editable Title and Body */
 .journal-title,
 .journal-body {
     outline: none;
@@ -51,35 +48,32 @@
     background: #f9f9f9;
     position: relative;
     word-wrap: break-word;
-    overflow: auto; /* Enable scrolling if content overflows */
+    overflow: auto;
 }
 
 .journal-body {
-    white-space: pre-wrap; /* Preserves whitespace */
-    word-wrap: break-word; /* Allows word break to prevent overflow */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-
-/* Scrollable Title Area */
 .journal-title {
     font-size: 24px;
     font-weight: bold;
     background-color: #fff;
-    max-height: 200px; /* Set max height so it can scroll if content exceeds */
-    overflow-y: auto; /* Allow vertical scrolling */
+    max-height: 200px;
+    overflow-y: auto;
 }
 
-/* Scrollable Body Area */
+
 .journal-body {
     min-height: 200px;
     font-size: 16px;
     line-height: 1.6;
     background-color: #fff;
-    max-height: 400px; /* Set a max-height for the body to scroll */
-    overflow-y: auto; /* Allow vertical scrolling */
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-/* Placeholder Handling */
 .journal-title::before,
 .journal-body::before {
     content: attr(data-placeholder);
@@ -96,7 +90,6 @@
     content: "";
 }
 
-/* Publish Button */
 .publish-button {
     display: inline-block;
     margin-top: 10px;
