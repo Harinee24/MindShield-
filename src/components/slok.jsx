@@ -7,9 +7,11 @@ const Slok = () => {
     const {shlokId} = useParams();
     const [shlok, setShlok] = useState(null);
 
+    console.log("This is ShlokId: ",shlokId);
+
     useEffect(() => {
         const fetchShlok = async () => {
-            const API_URL = `http://localhost:8083/api/v1/shloks/get-shlok/${shlokId}`;
+            const API_URL = `http://localhost:8083/api/shlok/${shlokId}`;
             const response = await axios.get(API_URL);
             setShlok(response.data);
         };
