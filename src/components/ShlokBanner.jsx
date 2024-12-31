@@ -85,7 +85,7 @@ const ShlokBanner = () => {
 
 
                     {/*<button className="button">Learn More</button>*/}
-                    <Link to={"#"} className="button">Learn More</Link>
+                    <Link to={`/shlok/${shlok.shlokId}`} className="button">Learn More</Link>
                 </div>
             </div>
 
