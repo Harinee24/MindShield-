@@ -1,36 +1,11 @@
-import {useEffect, useState} from "react";
-import Cookies from "js-cookie";
+import {useContext} from "react";
 import {Link} from "react-router-dom";
 import "./navbar.css";
-import logo from "/Logo.svg"
+import logo from "/Logo.svg";
+import {UserContext} from "../ContextAPI/UserContext.jsx";
 
 const Navbar = () => {
-    const [user, setUser] = useState(null); // State to store logged-in user
-
-    useEffect(() => {
-        const userCookie = Cookies.get("user");
-        if (userCookie) {
-            setUser(JSON.parse(userCookie)); // Set user if cookie exists
-        } else {
-            setUser(null); // Ensure no user is set
-        }
-    }, []);
-
-
-    // useEffect(() => {
-    //
-    //     const updateUser = () => {
-    //         const userCookie = Cookies.get("user");
-    //         setUser(userCookie ? JSON.parse(userCookie) : null);
-    //         console.log("Calling updateUser function");
-    //     };
-    //
-    //     const interval = setInterval(updateUser, 0);
-    //
-    //     return () => clearInterval(interval);
-    // }, []);
-
-
+    const {user} = useContext(UserContext);
     return (
         <>
             <div className="navbar-container">

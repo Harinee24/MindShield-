@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
         const fetchDetails = async () => {
             try {
-                const usersRes = await axios.get("http://localhost:8080/api/admin/get/all/users",{
+                const usersRes = await axios.get("http://localhost:8080/api/admin/get/all/users", {
                     params: {
                         userId: userData.userId,
                     }
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
 
     console.log("User: ", users);
     console.log("Journal: ", journals);
-    console.log("Contacts: ",emergencyContact);
+    console.log("Contacts: ", emergencyContact);
     console.log("Logs: ", alertLogs);
 
     return (
