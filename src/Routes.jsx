@@ -2,9 +2,8 @@ import {lazy, Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom';
 import './index.css';
+import Layout from './Layout.jsx';
 
-
-const Layout = lazy(() => import('./Layout.jsx'));
 const RegisterForm = lazy(() => import("./components/Register.jsx"));
 const Contact = lazy(() => import("./pages/SOSAlerts/Contact/contact.jsx"));
 const SendAlerts = lazy(() => import("./pages/SOSAlerts/SendAlerts/sendAlerts.jsx"));
@@ -35,7 +34,7 @@ const router = createBrowserRouter(
             <Route path="/profile" element={<Profile/>}/>
             <Route path={"/edit-profile"} element={<EditProfile/>}/>
             <Route path="/journals" element={<Journal/>}/>
-            <Route path="/journal/:journalId" element={<SingleJournal/>}/> {/* Dynamic route for single journal */}
+            <Route path="/journal/:journalId" element={<SingleJournal/>}/>
             <Route path="/shlok/:shlokId" element={<Slok/>}/>
             <Route path="/forgotPassword" element={<ForgotPassword/>}/>
             <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
@@ -44,7 +43,6 @@ const router = createBrowserRouter(
         </Route>
     )
 );
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Suspense fallback={<div className="loading"><img src="/loading.svg" alt="loading..."/></div>}>
         <RouterProvider router={router}/>

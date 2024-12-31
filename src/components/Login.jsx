@@ -1,40 +1,35 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import Cookies from 'js-cookie';
 import {login} from '../services/AuthService.jsx';
 import {toast} from 'sonner';
 import './login.css';
+import {UserContext} from "../ContextAPI/UserContext.jsx";
 
 const LoginForm = () => {
+
+    const {setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
-    // State for form inputs
     const [data, setData] = useState({
         email: '',
         password: '',
     });
-
-    // State for form errors
     const [errors, setErrors] = useState({
         email: '',
         password: '',
     });
-
-    // Handle input changes
     const handleInputChange = (field, value) => {
         setData((prevState) => ({
             ...prevState,
             [field]: value,
         }));
 
-        // Clear the error for the specific field when user starts typing
         setErrors((prevState) => ({
             ...prevState,
             [field]: '',
         }));
     };
-
-    // Validate form fields
     const validate = () => {
         const newErrors = {};
 
@@ -51,28 +46,26 @@ const LoginForm = () => {
         }
 
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0; // Form is valid if there are no errors
+        return Object.keys(newErrors).length === 0;
     };
 
-    // Handle form submission
     const handleLogin = (e) => {
         e.preventDefault();
 
         if (validate()) {
             login(data)
                 .then((resp) => {
-                    console.log("User Response: ", resp);
                     const user = {
                         userId: resp.userId,
                         name: resp.name,
                         email: resp.email,
                     };
-                    if(resp.profileImage.imageData !== null && resp.profileImage.imageType !== null ) {
+                    if (resp.profileImage.imageData !== null && resp.profileImage.imageType !== null) {
                         localStorage.setItem("profileImage", resp.profileImage.imageData);
                         localStorage.setItem("profileImageType", resp.profileImage.imageType);
                     }
-
                     Cookies.set('user', JSON.stringify(user), {expires: 7, secure: true});
+                    setUser(JSON.stringify(user));
                     toast.success('User logged in successfully');
                     navigate('/contact');
                 })
@@ -89,7 +82,6 @@ const LoginForm = () => {
             <p>Enter your email and password below to login to your account</p>
             <form onSubmit={handleLogin}>
 
-                {/* Email Input */}
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -104,7 +96,6 @@ const LoginForm = () => {
                     {errors.email && <span className="error-text">{errors.email}</span>}
                 </div>
 
-                {/* Password Input */}
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
@@ -122,16 +113,13 @@ const LoginForm = () => {
                     Forgot password? <Link to="/forgotPassword">Reset Password</Link>
                 </p>
 
-                {/* Login Button */}
                 <button type="submit" className="login-button">
                     Login
                 </button>
             </form>
 
-
-            {/* Sign Up Link */}
             <p className="signup-text">
-                Don't have an account? <Link to="/register">Sign Up</Link>
+                Don&#39;t have an account? <Link to="/register">Sign Up</Link>
             </p>
         </div>
     );
